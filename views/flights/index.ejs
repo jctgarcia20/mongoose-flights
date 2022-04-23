@@ -1,5 +1,35 @@
 <%- include('../partials/header') %>
 
-
+<div class="flightlist">
+  <h1>All Mongoose Flights:</h1>
+  <table>
+    <th>
+      <tr>
+        <td>Delete Flight</td>
+        <td>Airline</td>
+        <td>Airport</td>
+        <td>Flight Number</td>
+        <td>Departure Date</td>
+      </tr>
+    </th>
+    
+    <tbody>
+      <% flights.forEach(function(f) { %>
+        <tr>
+          <td>
+            <form action="/flights/<%=f._id%>?_method=DELETE" method="POST" class="delete-form">
+              <button type="submit">X</button>
+            </form>
+          </td>
+          <td><%= f.airline %></td>
+          <td><%= f.airport %></td>
+          <td><%= f.flightNo %></td>
+          <td><%= f.departs %></td>
+          <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</div>
 
 <%- include('../partials/footer') %>
